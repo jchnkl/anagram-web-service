@@ -1,0 +1,18 @@
+[submodule "rest-service"]
+	path = rest-service
+	url = ./rest-service
+[submodule "anagram-service"]
+	path = anagram-service
+	url = ./anagram-service
+[submodule "anagram-solver"]
+	path = anagram-solver
+	url = ./anagram-solver
+[submodule "completion-service"]
+	path = completion-service
+	url = ./completion-engine
+[submodule "completion-engine"]
+	path = completion-engine
+	url = ./completion-engine
+[submodule "webui-service"]
+	path = webui-service
+	url = ./webui-service
