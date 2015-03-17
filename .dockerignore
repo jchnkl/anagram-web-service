@@ -1,0 +1,6 @@
+.*.sw[op]
+.git
+dist
+*/.*.sw[op]
+*/.git
+*/dist
