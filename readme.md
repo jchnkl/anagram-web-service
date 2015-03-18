@@ -1,4 +1,4 @@
-## Anagram solver as a service
+## Installation
 
 ### Docker container
 
@@ -26,7 +26,7 @@ The anagram service is available at port `1525`, and the completer at `1880`.
 
 ### Manual compilation and running
 
-### Building
+#### Building
 
 ```bash
 BUILD_ROOT=/tmp/anagram-web-service
@@ -68,7 +68,7 @@ cabal sandbox init --sandbox ${BUILD_ROOT}/cabal-sandbox
 cabal build
 ```
 
-### Running
+#### Running
 
 ```bash
 ${BUILD_ROOT}/anagram-service/dist/build/anagram-service/anagram-service
@@ -77,6 +77,8 @@ ${BUILD_ROOT}/webui-service/dist/build/webui-service/webui-service
 ```
 
 The services should now be running on localhost at ports `1525`, `1880` and `8888`.
+
+## Anagram solver as a service
 
 ### Solver
 
