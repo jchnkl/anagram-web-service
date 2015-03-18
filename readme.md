@@ -23,6 +23,7 @@ docker run -p 1525:1525 -p 1880:1880 -p 8888:8888 jotrk/anagram-web-service
 The service can now be accessed through [http://localhost:8888/](http://localhost:8888/).
 
 The anagram service is available at port `1525`, and the completer at `1880`.
+The container can be stopped with `docker kill`.
 
 ### Manual compilation and running
 
