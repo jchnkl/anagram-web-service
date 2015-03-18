@@ -9,7 +9,7 @@
 	url = https://github.com/jotrk/anagram-solver
 [submodule "completion-service"]
 	path = completion-service
-	url = https://github.com/jotrk/completion-engine
+	url = https://github.com/jotrk/completion-service
 [submodule "completion-engine"]
 	path = completion-engine
 	url = https://github.com/jotrk/completion-engine
