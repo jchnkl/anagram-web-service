@@ -109,7 +109,7 @@ The implementation can be found at the
 ### Service
 
 The service is currently implemented as a primitive rest api.
-Example query: `http://example.com:1525/complete/master%20of%20the%20universe`
+Example query: `http://example.com:1525/anagram/master%20of%20the%20universe`
 
 The implementation can be found at the
 [anagram-service](https://github.com/jotrk/anagram-service) repository at Github.
