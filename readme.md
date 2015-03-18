@@ -1,5 +1,83 @@
 ## Anagram solver as a service
 
+### Docker container
+
+This repository contains a Dockerfile for building the whole package as a Docker
+container. This is not meant as a proper web service, but only for testing
+purposes.
+
+#### Building the container
+
+There are two options: Either build the Docker container yourself with `docker
+build -t anagram-web-service .`, which might take some time, or just pull the
+container: `docker pull jotrk/anagram-web-service`.
+
+#### Running
+
+Run the docker container like below, to expose all necessary ports.
+
+```
+docker run -p 1525:1525 -p 1880:1880 -p 8888:8888 jotrk/anagram-web-service
+```
+
+The service can now be accessed through [http://localhost:8888/](http://localhost:8888/).
+
+The anagram service is available at port `1525`, and the completer at `1880`.
+
+### Manual compilation and running
+
+### Building
+
+```bash
+BUILD_ROOT=/tmp/anagram-web-service
+
+git clone --recursive http://github.com/jotrk/anagram-web-service ${BUILD_ROOT}
+
+mkdir ${BUILD_ROOT}/cabal-sandbox
+cd ${BUILD_ROOT}/cabal-sandbox
+
+cabal sandbox init --sandbox .
+cabal install dawg wai-cors scotty
+
+cd ${BUILD_ROOT}/rest-service
+cabal sandbox init --sandbox ${BUILD_ROOT}/cabal-sandbox
+cabal build
+
+cd ${BUILD_ROOT}/completion-engine
+cabal sandbox init --sandbox ${BUILD_ROOT}/cabal-sandbox
+cabal build
+
+cd ${BUILD_ROOT}/completion-service
+cabal sandbox init --sandbox ${BUILD_ROOT}/cabal-sandbox
+cabal sandbox add-source ${BUILD_ROOT}/rest-service
+cabal sandbox add-source ${BUILD_ROOT}/completion-engine
+cabal build
+
+cd ${BUILD_ROOT}/anagram-solver
+cabal sandbox init --sandbox ${BUILD_ROOT}/cabal-sandbox
+cabal build
+
+cd ${BUILD_ROOT}/anagram-service
+cabal sandbox init --sandbox ${BUILD_ROOT}/cabal-sandbox
+cabal sandbox add-source ${BUILD_ROOT}/rest-service
+cabal sandbox add-source ${BUILD_ROOT}/anagram-solver
+cabal build
+
+cd ${BUILD_ROOT}/webui-service
+cabal sandbox init --sandbox ${BUILD_ROOT}/cabal-sandbox
+cabal build
+```
+
+### Running
+
+```bash
+${BUILD_ROOT}/anagram-service/dist/build/anagram-service/anagram-service
+${BUILD_ROOT}/completion-service/dist/build/completion-service/completion-service
+${BUILD_ROOT}/webui-service/dist/build/webui-service/webui-service
+```
+
+The services should now be running on localhost at ports `1525`, `1880` and `8888`.
+
 ### Solver
 
 Finding anagrams for all combinations of letters in a word is a quite hard
@@ -68,27 +146,3 @@ running the small http server in the package.
 
 The implementation can be found at the
 [webui-service](https://github.com/jotrk/webui-service) repository at Github.
-
-## Dockerfile
-
-This repository contains a Dockerfile for building the whole package as a Docker
-container. This is not meant as a proper web service, but only for trying it
-out.
-
-### Building and Pulling
-
-There are two options: Either build the Docker container yourself with `docker
-build -t anagram-web-service .`, which might take some time, or just pull the
-container: `docker pull jotrk/anagram-web-service`.
-
-### Running
-
-Run the docker container like below, to expose all necessary ports.
-
-```
-docker run -p 1525:1525 -p 1880:1880 -p 8888:8888 jotrk/anagram-web-service
-```
-
-The service can now be accessed through [http://localhost:8888/](http://localhost:8888/).
-
-The anagram service is available at port `1525`, and the completer at `1880`.
