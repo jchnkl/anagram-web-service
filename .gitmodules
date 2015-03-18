@@ -1,18 +1,18 @@
 [submodule "rest-service"]
 	path = rest-service
-	url = ./rest-service
+	url = https://github.com/jotrk/rest-service
 [submodule "anagram-service"]
 	path = anagram-service
-	url = ./anagram-service
+	url = https://github.com/jotrk/anagram-service
 [submodule "anagram-solver"]
 	path = anagram-solver
-	url = ./anagram-solver
+	url = https://github.com/jotrk/anagram-solver
 [submodule "completion-service"]
 	path = completion-service
-	url = ./completion-engine
+	url = https://github.com/jotrk/completion-engine
 [submodule "completion-engine"]
 	path = completion-engine
-	url = ./completion-engine
+	url = https://github.com/jotrk/completion-engine
 [submodule "webui-service"]
 	path = webui-service
-	url = ./webui-service
+	url = https://github.com/jotrk/webui-service
