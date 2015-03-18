@@ -1,6 +1,6 @@
-### Anagram solving as a service
+## Anagram solver as a service
 
-## Solver
+### Solver
 
 Finding anagrams for all combinations of letters in a word is a quite hard
 problem. Naive solutions do not scale, because generating the subsequences has
@@ -28,9 +28,7 @@ node and descend from there on.
 The implementation can be found at the
 [anagram-solver](https://github.com/jotrk/anagram-solver) repository at Github.
 
-
-
-## Service
+### Service
 
 The service is currently implemented as a primitive rest api.
 Example query: `http://example.com:1880/complete/master%20of%20the%20universe`
@@ -38,10 +36,9 @@ Example query: `http://example.com:1880/complete/master%20of%20the%20universe`
 The implementation can be found at the
 [anagram-service](https://github.com/jotrk/anagram-service) repository at Github.
 
+## Completion as a service
 
-### Completion as a service
-
-## Engine
+### Engine
 
 Providing completion for text input is a typical use case for tries. The
 implementation is extremely simple. For a given partial word, descend on the
@@ -52,7 +49,7 @@ implementation is based on a DAWG again.
 The implementation can be found at the
 [completion-engine](https://github.com/jotrk/completion-engine) repository at Github.
 
-## Service
+### Service
 
 The service is currently implemented as a primitive rest api.
 Example query: `http://example.com:1880/complete/master%20of%20the%20univ`
@@ -60,7 +57,7 @@ Example query: `http://example.com:1880/complete/master%20of%20the%20univ`
 The implementation can be found at the
 [completion-service](https://github.com/jotrk/completion-service) repository at Github.
 
-### Web user interface
+## Web user interface
 
 The user interface is currently a very simplistic piece of HTML and Javascript,
 which uses the [autocomplete](http://jqueryui.com/autocomplete/) feature of the
@@ -72,19 +69,19 @@ running the small http server in the package.
 The implementation can be found at the
 [webui-service](https://github.com/jotrk/webui-service) repository at Github.
 
-### Dockerfile
+## Dockerfile
 
 This repository contains a Dockerfile for building the whole package as a Docker
 container. This is not meant as a proper web service, but only for trying it
 out.
 
-## Building and Pulling
+### Building and Pulling
 
 There are two options: Either build the Docker container yourself with `docker
 build -t anagram-web-service .`, which might take some time, or just pull the
 container: `docker pull jotrk/anagram-web-service`.
 
-## Running
+### Running
 
 Run the docker container like below, to expose all necessary ports.
 
